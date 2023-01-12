@@ -11,15 +11,20 @@
   }
 
   async function print() {
-    const res = await fetch('http://mush.network/api/print', {
+    const trimmedText = text.trim()
+
+    if (!trimmedText) return
+
+    const res = await fetch('http://192.168.1.40:3000', {
       method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
-        thing: 'yeah',
-        other: 'yep',
+        msg: `${trimmedText}\n`,
       })
     })
-    const json = await res.json()
-    result = JSON.stringify(json)
     text = ''
   }
 </script>

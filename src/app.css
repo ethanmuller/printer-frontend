@@ -8,6 +8,8 @@ main {
   font-weight: 300;
   font-size: 1.2em;
   width: 100%;
+  max-width: 35rem;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
@@ -15,7 +17,7 @@ main {
 textarea {
   word-break: break-all;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 1rem;
   resize: none;
 
   border: none;

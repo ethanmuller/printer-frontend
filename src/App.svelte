@@ -8,6 +8,8 @@
       event.preventDefault()
       print()
     }
+
+    console.log(this.selectionStart)
   }
 
   async function print() {
@@ -15,7 +17,7 @@
 
     if (!trimmedText) return
 
-    const res = await fetch('http://192.168.1.40:3000', {
+    const res = await fetch('http://192.168.1.151:3000', {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -27,6 +29,30 @@
     })
     text = ''
   }
+
+  function limitLineLength(str, maxLength) {
+    // Split the string into words
+    const words = str.split(' ');
+
+    let currentLineLength = 0;
+    let result = '';
+
+    // Iterate through the words
+    for (const word of words) {
+      // If adding the current word to the line would exceed the max length, start a new line
+      if (currentLineLength + word.length > maxLength) {
+        result += '\n';
+        currentLineLength = 0;
+      }
+
+      // Add the word to the line
+      result += word + ' ';
+      currentLineLength += word.length + 1;
+    }
+
+    return result;
+  }
+
 </script>
 
 <main>
